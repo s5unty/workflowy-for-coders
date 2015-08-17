@@ -84,7 +84,7 @@ jQuery.fn.getID = function() {
 
 jQuery(document).ready(function($) {
   
-  var converter = new Showdown.converter(),
+  var converter = new showdown.Converter(),
       timeout;
 
 	$("textarea").focus(function() {
