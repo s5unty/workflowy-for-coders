@@ -83,8 +83,26 @@ jQuery.fn.getID = function() {
 }
 
 jQuery(document).ready(function($) {
-  
-  var converter = new showdown.Converter(),
+
+  var converter = new showdown.Converter({
+      /**
+       * Enable support for setting image dimensions from within markdown syntax. Examples:
+       *
+       * ![foo](foo.jpg =100x80)     simple, assumes units are in px
+       * ![bar](bar.jpg =100x*)      sets the height to "auto"
+       * ![baz](baz.jpg =80%x5em)    Image with width of 80% and height of 5em
+       */
+      parseImgDimensions: true,
+      /**
+       * [default false] Enable support for tables syntax. Example:
+       * 
+       * | h1    |    h2   |      h3 |
+       * |:------|:-------:|--------:|
+       * | 100   | [a][1]  | ![b][2] |
+       * | *foo* | **bar** | ~~baz~~ |
+       */
+      tables: true
+  }),
       timeout;
 
 	$("textarea").focus(function() {
